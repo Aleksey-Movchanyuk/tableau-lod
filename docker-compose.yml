@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  oracle:
+    build:
+      context: ""
+      dockerfile: docker/oracle.dockerfile
+    container_name: tableau-lod-oracle
+    environment:
+      ORACLE_SID: ORCL
+      ORACLE_PDB: TABLEAU
+      ORACLE_PWD: oracle
+      ORACLE_CHARACTERSET: AL32UTF8
+      ORACLE_EDITION: enterprise
+      ENABLE_ARCHIVELOG: 'false'
+      INIT_SGA_SIZE: 3000
+      INIT_PGA_SIZE: 1000
+    volumes:
+      - oradata:/opt/oracle/oradata # persistent oracle database data      
+    ports:
+      - 1521:1521
+      - 5500:5500
+    networks:
+      - backbone
+
+
+volumes:
+  oradata: {}
+
+networks:
+  backbone:
+    driver: bridge

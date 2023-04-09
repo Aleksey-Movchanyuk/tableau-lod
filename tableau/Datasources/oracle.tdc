@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<connection-customization class='oracle' enabled='true' version='8.10'>
+<vendor name='oracle' />
+<driver name='oracle' />
+    <customizations>
+        <customization name='CAP_CREATE_TEMP_TABLES' value='no' />
+        <customization name='CAP_SELECT_INTO' value='no' />
+    </customizations>
+</connection-customization>
